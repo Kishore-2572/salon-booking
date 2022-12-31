@@ -113,7 +113,8 @@ const Salonprofile = () => {
                   console.log(e.target.textContent);
                 }}
               >
-                Hair cutting, Shaving, Trimmining, Hair Smoothining, Fire cutting, Grooming,
+                Hair cutting, Shaving, Trimmining, Hair Smoothining, Fire
+                cutting, Grooming,
               </div>
             </div>
           </div>
@@ -129,16 +130,25 @@ const Salonprofile = () => {
               <h2>SALON PHOTOS</h2>
               <div className="salonphotos">
                 <div className="salonphoto">
-
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbzy7W-nyDgS5joDyB9l_OSmByMXwRDJG5Qw&usqp=CAU"
+                    alt=""
+                  />
                 </div>
                 <div className="salonphoto">
-                  
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbzy7W-nyDgS5joDyB9l_OSmByMXwRDJG5Qw&usqp=CAU"
+                    alt=""
+                  />
                 </div>
                 <div className="salonphoto">
-                  
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbzy7W-nyDgS5joDyB9l_OSmByMXwRDJG5Qw&usqp=CAU"
+                    alt=""
+                  />
                 </div>
                 <div className="salonphoto-add flex-center">
-                <i className="fa-solid fa-circle-plus"></i>
+                  <i className="fa-solid fa-circle-plus"></i>
                 </div>
               </div>
             </div>
@@ -146,16 +156,25 @@ const Salonprofile = () => {
               <h2>STYLIST PHOTOS</h2>
               <div className="salonphotos">
                 <div className="stylistphoto">
-
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbzy7W-nyDgS5joDyB9l_OSmByMXwRDJG5Qw&usqp=CAU"
+                    alt=""
+                  />
                 </div>
                 <div className="stylistphoto">
-                  
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbzy7W-nyDgS5joDyB9l_OSmByMXwRDJG5Qw&usqp=CAU"
+                    alt=""
+                  />
                 </div>
                 <div className="stylistphoto">
-                  
+                  <img
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbzy7W-nyDgS5joDyB9l_OSmByMXwRDJG5Qw&usqp=CAU"
+                    alt=""
+                  />
                 </div>
                 <div className="stylistphoto-add flex-center">
-                <i className="fa-solid fa-circle-plus"></i>
+                  <i className="fa-solid fa-circle-plus"></i>
                 </div>
               </div>
             </div>

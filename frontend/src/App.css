@@ -93,9 +93,7 @@ ToastContainer {
   padding: 0.1rem;
   overflow: hidden;
 }
-/* .nav-item-profile > img {
-  width: 100%;
-} */
+
 .nav-item {
   height: 1rem;
   border: 1px solid white;
@@ -1416,12 +1414,24 @@ option,
   border-radius: 1rem;
 }
 
+.salonphoto > img, .stylistphoto >img{
+  min-height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 100;
+  border-radius: 1rem;
+}
+
 .salonphoto-add{
   width: 10rem;
   height: 10rem;
   border: 1px dashed white;
   border-radius: 1rem;
   cursor: pointer;
+}
+
+.salonphoto-add:hover, .stylistphoto-add:hover{
+  background-color: rgba(253, 253, 253, 0.2);
 }
 
 .salonphoto-add > i , .stylistphoto-add >i{
