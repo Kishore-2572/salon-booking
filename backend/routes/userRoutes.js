@@ -53,7 +53,7 @@ userRouter.post('/signin', async (req, res) => {
           token: generateUserToken(user),
         });
       } else {
-        res.status(401).send({ message: "Password doesn't match" });
+        res.status(401).send({ message: "Incorrect Password" });
       }
     } else {
       res.status(401).send({ message: 'No matching user' });

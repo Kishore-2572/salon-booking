@@ -1,16 +1,63 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { json, Link } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { store } from '../../store';
 import logo from '../../assets/logo.png';
 import Auth from '../../assets/undraw_my_password_re_ydq7.svg';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { useReducer } from 'react';
+import { getError } from '../../util';
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'SENDING_REQUEST':
+      return { ...state, loading: true };
+    case 'REQUEST_COMPLETED':
+      return { ...state, loading: false };
+  }
+};
 
 const Signup = () => {
-  const { state, dispatch } = useContext(store);
+  const [{ loading }, dispatch] = useReducer(reducer, { loading: false });
+  const { state, dispatch: ctxDispatch } = useContext(store);
   const { user } = state;
 
-  const submitHandler = (e) => {
-    e.preventdefault();
+  const [name, setName] = useState('');
+  const [mobile, setMobile] = useState('');
+  const [city, setCity] = useState('');
+  const [pincode, setPincode] = useState('');
+  const [password, setPassword] = useState('');
+  const [cpassword, setCpassword] = useState('');
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    if (mobile.length !== 10) {
+      toast.error('Enter a valid Mobile number');
+    } else if (pincode.length !== 6) {
+      toast.error('Enter a valid PIN code');
+    } else if (password !== cpassword) {
+      toast.error("Passwords doesn't match");
+    } else {
+      try {
+        dispatch({ type: 'SENDING_REQUEST' });
+        const response = await axios.post('/user/signup', {
+          name,
+          mobile,
+          city,
+          pincode,
+          password,
+        });
+        // console.log(response);
+        const { data } = response;
+        ctxDispatch({ type: 'SIGN_IN', payload: data });
+        localStorage.setItem('user', JSON.stringify(data));
+        dispatch({ type: 'REQUEST_COMPLETED' });
+        window.location.href = '/';
+      } catch (e) {
+        toast.error(getError(e));
+      }
+    }
   };
 
   useEffect(() => {
@@ -36,7 +83,7 @@ const Signup = () => {
             <p className="signup-form-label">PIN CODE</p>
             <p className="signup-form-label">PASSWORD</p>
             <p className="signup-form-label">CONFIRM-PASSWORD</p>
-            <p className="signup-form-label">OTP <button className='otp-btn'>Send OTP</button></p>
+            {/* <p className="signup-form-label">OTP <button className='otp-btn'>Send OTP</button></p> */}
           </div>
           <div className="signup-form-inputs">
             <form
@@ -49,6 +96,8 @@ const Signup = () => {
                 type="text"
                 name="name"
                 placeholder="Enter your name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
                 required
               />
               <input
@@ -56,6 +105,8 @@ const Signup = () => {
                 type="tel"
                 name="mobile"
                 placeholder="Enter your mobile number"
+                value={mobile}
+                onChange={(e) => setMobile(e.target.value)}
                 required
               />
               <input
@@ -63,6 +114,8 @@ const Signup = () => {
                 type="text"
                 name="city"
                 placeholder="Enter your city"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
                 required
               />
               <input
@@ -70,6 +123,8 @@ const Signup = () => {
                 type="number"
                 name="pincoe"
                 placeholder="Enter your PIN code"
+                value={pincode}
+                onChange={(e) => setPincode(e.target.value)}
                 required
               />
               <input
@@ -77,6 +132,8 @@ const Signup = () => {
                 type="password"
                 name="password"
                 placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 required
               />
               <input
@@ -84,21 +141,23 @@ const Signup = () => {
                 type="password"
                 name="cpassword"
                 placeholder="Retype the password"
+                value={cpassword}
+                onChange={(e) => setCpassword(e.target.value)}
                 required
               />
-              <input
+              {/* <input
                 className="signup-input"
                 type="number"
                 name="otp"
                 placeholder="Enter the OTP"
                 required
-              />
+              /> */}
             </form>
           </div>
         </div>
         <div className="signup-btn-div flex-center">
           <button form="signup-form" type="submit" className="signup-btn">
-            <i class="fa-solid fa-arrow-right "></i>Signup
+            <i className="fa-solid fa-arrow-right "></i>Signup
           </button>
         </div>
       </div>

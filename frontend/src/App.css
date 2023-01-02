@@ -370,6 +370,7 @@ ToastContainer {
   border-radius: 2rem;
   color: black;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .signup-img-container {
@@ -425,6 +426,7 @@ ToastContainer {
     top: 45rem;
     margin: 1rem auto;
     width: 100%;
+    
   }
   .signup-img-container {
     width: 0;

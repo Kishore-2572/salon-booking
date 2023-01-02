@@ -19,7 +19,7 @@ const Saloncard = () => {
           </div>
         </Link>
         <a href="tel:+6379306614" className="call-link">
-        <i class="fa-solid fa-phone-volume"></i>
+        <i className="fa-solid fa-phone-volume"></i>
           <p>6379306614</p>
         </a>
       </div>

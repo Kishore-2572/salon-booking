@@ -24,4 +24,4 @@ export function Provider(props){
     const value={state,dispatch};
     return <store.Provider value={value} >{props.children}</store.Provider>;
 
-}
+} 

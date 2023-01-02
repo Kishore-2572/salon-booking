@@ -4,13 +4,46 @@ import { useContext, useState } from 'react';
 import { store } from '../store';
 import Auth from '../assets/undraw_secure_login_pdn4.svg';
 import logo from '../assets/logo.png';
+import { useReducer } from 'react';
+import { toast } from 'react-toastify';
+import axios from 'axios';
+import { getError } from '../util';
 
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'SENDING_REQUEST':
+      return { ...state, loading: true };
+    case 'REQUEST_COMPLETED':
+      return { ...state, loading: false };
+  }
+};
 const Login = () => {
-  const { state, dispatch } = useContext(store);
+  const [{ loading }, dispatch] = useReducer(reducer, {
+    loading: false,
+  });
+  const { state, dispatch: ctxDispatch } = useContext(store);
   const { user } = state;
 
-  const submitHandler = (e) => {
-    e.preventdefault();
+  const [mobile, setMobile] = useState('');
+  const [password, setPassword] = useState('');
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    dispatch({ type: 'SENDING_REQUEST' });
+    try {
+      const response = await axios.post('/user/signin', {
+        mobile,
+        password,
+      });
+      const { data } = response;
+      localStorage.setItem('user', JSON.stringify(data));
+      ctxDispatch({ type: 'SIGN_IN', payload: data });
+      dispatch({ type: 'REQUEST_COMPLETED' });
+    } catch (e) {
+      toast.error(getError(e));
+    }
+
+    dispatch({ type: 'REQUEST_COMPLETED' });
   };
 
   useEffect(() => {
@@ -32,6 +65,9 @@ const Login = () => {
                   type="tel"
                   name="mobile"
                   placeholder="Enter your mobile number"
+                  value={mobile}
+                  onChange={(e) => setMobile(e.target.value)}
+                  required
                 />
               </label>
               <label className="login-label">
@@ -42,11 +78,14 @@ const Login = () => {
                   type="password"
                   name="password"
                   placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
                 />
               </label>
               <div className="btn-div">
                 <button type="submit" className="login-btn">
-                  <i class="fa-solid fa-arrow-right "></i>Login
+                  <i className="fa-solid fa-arrow-right "></i>Login
                 </button>
               </div>
             </form>
