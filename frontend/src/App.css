@@ -319,7 +319,7 @@ ToastContainer {
 }
 
 .signup-header {
-  margin: 2rem auto;
+  margin: 1rem auto;
 }
 
 .signup-header > h1 {
@@ -332,7 +332,7 @@ ToastContainer {
 
 .signup-form-div {
   display: flex;
-  margin: 3rem;
+  margin: 1rem;
 }
 
 .signup-form-label {
@@ -342,6 +342,7 @@ ToastContainer {
 .signup-form {
   display: flex;
   flex-direction: column;
+  gap: 0.45rem;
 }
 .signup-form-inputs {
   margin: 0.7rem 1.3rem;
@@ -373,6 +374,16 @@ ToastContainer {
 
 .signup-img-container {
   width: 30%;
+}
+
+.otp-btn{
+  border-radius: 1rem;
+  width: 7rem;
+  height: 2rem;
+  color: black;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 1300px) and (min-width: 600px) {
@@ -411,8 +422,9 @@ ToastContainer {
   }
   .signup-btn-div {
     position: absolute;
-    top: 40rem;
-    left: 30%;
+    top: 45rem;
+    margin: 1rem auto;
+    width: 100%;
   }
   .signup-img-container {
     width: 0;
@@ -1414,7 +1426,8 @@ option,
   border-radius: 1rem;
 }
 
-.salonphoto > img, .stylistphoto >img{
+.salonphoto > img,
+.stylistphoto > img {
   min-height: 100%;
   max-width: 100%;
   max-height: 100%;
@@ -1422,7 +1435,7 @@ option,
   border-radius: 1rem;
 }
 
-.salonphoto-add{
+.salonphoto-add {
   width: 10rem;
   height: 10rem;
   border: 1px dashed white;
@@ -1430,11 +1443,13 @@ option,
   cursor: pointer;
 }
 
-.salonphoto-add:hover, .stylistphoto-add:hover{
+.salonphoto-add:hover,
+.stylistphoto-add:hover {
   background-color: rgba(253, 253, 253, 0.2);
 }
 
-.salonphoto-add > i , .stylistphoto-add >i{
+.salonphoto-add > i,
+.stylistphoto-add > i {
   font-size: 3rem;
 }
 
@@ -1445,7 +1460,7 @@ option,
   border-radius: 1rem;
 }
 
-.stylistphoto-add{
+.stylistphoto-add {
   width: 10rem;
   height: 12rem;
   border: 1px dashed white;
@@ -1494,7 +1509,7 @@ option,
     padding: 0;
     margin: 1rem auto;
   }
-  .salonphotos{
+  .salonphotos {
     justify-content: space-evenly;
     gap: 2rem;
   }

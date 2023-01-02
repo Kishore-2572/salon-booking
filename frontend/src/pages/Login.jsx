@@ -26,12 +26,12 @@ const Login = () => {
             <p className="login-para">SignIn to your Account</p>
             <form onSubmit={submitHandler} className="login-form">
               <label className="login-label">
-                Your Email
+                Your Mobile
                 <input
                   className="login-input"
-                  type="email"
-                  name="email"
-                  placeholder="Enter your mail"
+                  type="tel"
+                  name="mobile"
+                  placeholder="Enter your mobile number"
                 />
               </label>
               <label className="login-label">

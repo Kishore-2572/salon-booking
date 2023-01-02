@@ -31,11 +31,12 @@ const Signup = () => {
         <div className="signup-form-div">
           <div className="signup-form-labels">
             <p className="signup-form-label">NAME</p>
-            <p className="signup-form-label">EMAIL</p>
+            <p className="signup-form-label">MOBILE</p>
             <p className="signup-form-label">CITY</p>
             <p className="signup-form-label">PIN CODE</p>
             <p className="signup-form-label">PASSWORD</p>
             <p className="signup-form-label">CONFIRM-PASSWORD</p>
+            <p className="signup-form-label">OTP <button className='otp-btn'>Send OTP</button></p>
           </div>
           <div className="signup-form-inputs">
             <form
@@ -48,41 +49,54 @@ const Signup = () => {
                 type="text"
                 name="name"
                 placeholder="Enter your name"
+                required
               />
               <input
                 className="signup-input"
-                type="email"
-                name="email"
-                placeholder="Enter your email"
+                type="tel"
+                name="mobile"
+                placeholder="Enter your mobile number"
+                required
               />
               <input
                 className="signup-input"
                 type="text"
                 name="city"
                 placeholder="Enter your city"
+                required
               />
               <input
                 className="signup-input"
                 type="number"
                 name="pincoe"
                 placeholder="Enter your PIN code"
+                required
               />
               <input
                 className="signup-input"
                 type="password"
                 name="password"
                 placeholder="Enter your password"
+                required
               />
               <input
                 className="signup-input"
                 type="password"
                 name="cpassword"
                 placeholder="Retype the password"
+                required
+              />
+              <input
+                className="signup-input"
+                type="number"
+                name="otp"
+                placeholder="Enter the OTP"
+                required
               />
             </form>
           </div>
         </div>
-        <div className="signup-btn-div">
+        <div className="signup-btn-div flex-center">
           <button form="signup-form" type="submit" className="signup-btn">
             <i class="fa-solid fa-arrow-right "></i>Signup
           </button>

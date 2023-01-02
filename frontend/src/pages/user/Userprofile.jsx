@@ -22,7 +22,7 @@ const Userprofile = () => {
         <div className="userprofile-user-details">
           <div className="userprofile-inputs-left">
             <h3>NAME</h3>
-            <h3>EMAIL</h3>
+            <h3>Mobile</h3>
             <h3>CITY</h3>
             <h3>PINCODE</h3>
           </div>
@@ -43,7 +43,7 @@ const Userprofile = () => {
                 console.log(e.target.textContent);
               }}
             >
-              Kishore@gmail.com
+              1234567890
             </div>
             <div
               className="userprofile-text-input"
