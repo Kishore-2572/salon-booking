@@ -65,7 +65,14 @@ salonRouter.post('/signin', async (req, res) => {
   }
 });
 
-
+salonRouter.get('/:salonid', async (req, res) => {
+  try {
+    const salon = await Salon.findById(req.params.salonid);
+    res.status(200).send(salon);
+  } catch (e) {
+    res.status(500).send(e.message);
+  }
+});
 
 salonRouter.put('/:salonid', isAuth, async (req, res) => {
   try {

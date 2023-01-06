@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Saloncard = () => {
+const Saloncard = ({ salon }) => {
   return (
     <>
       <div className="salon-card">
-        <Link to="/saloninfo/1qaz2wsx">
+        <Link to={'/saloninfo/' + salon._id}>
           <div className="salon-card-img">
             <img
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbzy7W-nyDgS5joDyB9l_OSmByMXwRDJG5Qw&usqp=CAU"
@@ -13,14 +13,16 @@ const Saloncard = () => {
             />
           </div>
           <div className="salon-card-details">
-            <h1>Hello Salon</h1>
-            <p>84, Lakshmipuram, Rayapalayam, Chithode,</p>
-            <p>Erode - 638 102</p>
+            <h1>{salon.name}</h1>
+            <p>{salon.address}</p>
+            <p>
+              {salon.city} - {salon.pincode}
+            </p>
           </div>
         </Link>
-        <a href="tel:+6379306614" className="call-link">
-        <i className="fa-solid fa-phone-volume"></i>
-          <p>6379306614</p>
+        <a href={'tel:+' + salon.mobile} className="call-link">
+          <i className="fa-solid fa-phone-volume"></i>
+          <p>{salon.mobile}</p>
         </a>
       </div>
     </>

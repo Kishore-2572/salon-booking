@@ -41,6 +41,31 @@ li {
   align-items: center;
 }
 
+.progress {
+  height: 7px;
+  width: 100%;
+  background: linear-gradient(#fcfcfe 0 0),
+      linear-gradient(#fcfcfe 0 0),
+      #020202;
+  background-size: 60% 100%;
+  background-repeat: no-repeat;
+  animation: progress-7x9cg2 1.7999999999999998s infinite;
+}
+
+@keyframes progress-7x9cg2 {
+  0% {
+     background-position: -150% 0,-150% 0;
+  }
+
+  66% {
+     background-position: 250% 0,-150% 0;
+  }
+
+  100% {
+     background-position: 250% 0, 250% 0;
+  }
+}
+
 /* ====================  Main ==================== */
 
 ToastContainer {
@@ -440,12 +465,12 @@ ToastContainer {
   }
 }
 
-/* ===================== USERHOME ===================== */
+/* ===================== USER HOME ===================== */
 .userhome {
   width: 100wh;
-  height: 92vh;
+  height: 90vh;
   position: relative;
-  padding-top: 10vh;
+  padding-top: 12vh;
 }
 
 .userhome-header {
@@ -492,7 +517,6 @@ ToastContainer {
   overflow-y: scroll;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   gap: 2rem;
 }
 
@@ -556,11 +580,11 @@ ToastContainer {
   margin: auto 1rem;
 }
 
-@media only screen and (max-width: 1120px) and (min-width: 600px) {
+/* @media only screen and (max-width: 1120px) and (min-width: 600px) {
   .salon-cards {
     justify-content: space-around;
   }
-}
+} */
 
 @media only screen and (max-width: 600px) and (min-width: 300px) {
   .userhome-heading {
@@ -916,6 +940,10 @@ ToastContainer {
   width: 50%;
   border: 1px solid white;
   border-radius: 2px;
+  background: transparent;
+  height: 1.6rem;
+  font-size: 1rem;
+  padding-left: 0.3rem;
 }
 
 .userdetails-save-btn {
@@ -990,6 +1018,31 @@ h5 {
 .uhcard-dates {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.suggestion{
+  align-items: center;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.uhbtn-div{
+  gap: 2rem;
+
+}
+
+.uhcard-btn{
+  height: 2.5rem;
+  width: 5rem;
+  font-size: 1rem;
+  color: #020202;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+.uhcard-btn i{
+  color: #020202;
 }
 
 @media only screen and (max-width: 1100px) and (min-width: 750px) {

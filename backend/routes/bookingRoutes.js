@@ -22,7 +22,7 @@ bookingRouter.post('/user', isAuth, async (req, res) => {
 
 bookingRouter.get('/user', isAuth, async (req, res) => {
   try {
-    const userBookings = await Booking.find({ userId: req.user._id });
+    const userBookings = await Booking.find({ userId: req.user._id }).sort({updatedAt: -1});
     res.status(200).send(userBookings);
   } catch (e) {
     res.status(500).send({ message: e.message });
