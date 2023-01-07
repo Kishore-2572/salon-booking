@@ -31,10 +31,11 @@ const Login = () => {
     e.preventDefault();
     dispatch({ type: 'SENDING_REQUEST' });
     try {
-      const response = await axios.post('/user/signin', {
+      const response = await axios.post('/login/signin', {
         mobile,
         password,
       });
+      console.log(response);
       const { data } = response;
       localStorage.setItem('user', JSON.stringify(data));
       ctxDispatch({ type: 'SIGN_IN', payload: data });
@@ -42,7 +43,6 @@ const Login = () => {
     } catch (e) {
       toast.error(getError(e));
     }
-
     dispatch({ type: 'REQUEST_COMPLETED' });
   };
 

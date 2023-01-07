@@ -1034,11 +1034,12 @@ h5 {
 
 .uhcard-btn{
   height: 2.5rem;
-  width: 5rem;
+  width: 5.5rem;
   font-size: 1rem;
   color: #020202;
   border-radius: 0.4rem;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .uhcard-btn i{
@@ -1305,12 +1306,26 @@ option,
   border-radius: 0.5rem;
   color: black;
   font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
 }
 
 .swcard-btn i {
   color: black;
 }
+.primary-btn{
+  background-color: white;
+}
 
+.secondary-btn{
+  background-color: black;
+  border: 2px solid white ;
+  color: white;
+}
+
+.secondary-btn i{
+  color: white;
+}
 .salonhome-right {
   width: 50%;
   border-left: 2px solid white;

@@ -44,10 +44,10 @@ const Salonwaitingcard = () => {
         </div>
       </div>
       <div className="swcard-right">
-        <button className="swcard-btn" style={{ backgroundColor: 'green' }}>
+        <button className="swcard-btn primary-btn" >
           <i className="fa-solid fa-circle-check"></i> Accept
         </button>
-        <button className="swcard-btn" style={{ backgroundColor: 'red' }}>
+        <button className="swcard-btn secondary-btn" >
           <i className="fa-solid fa-circle-xmark"></i> Reject
         </button>
       </div>

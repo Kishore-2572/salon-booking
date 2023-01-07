@@ -12,7 +12,7 @@ const Home = () => {
   useEffect(() => {
     if (!user) window.location.href='/login';
   }, [user]);
-
+  console.log(user.isAdmin);
   return (user && user.isAdmin) ? <Salonhome /> : <Userhome />;
 };
 

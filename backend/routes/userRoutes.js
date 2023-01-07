@@ -36,32 +36,32 @@ userRouter.post('/signup', async (req, res) => {
   }
 });
 
-userRouter.post('/signin', async (req, res) => {
-  try {
-    const mobile = req.body.mobile;
-    const password = req.body.password;
-    const user = await User.findOne({ mobile: mobile });
-    if (user) {
-      if (bcrypt.compareSync(password, user.password)) {
-        res.status(200).send({
-          _id: user._id,
-          name: user.name,
-          mobile: user.mobile,
-          city: user.city,
-          pincode: user.pincode,
-          isAdmin: user.isAdmin,
-          token: generateUserToken(user),
-        });
-      } else {
-        res.status(401).send({ message: "Incorrect Password" });
-      }
-    } else {
-      res.status(401).send({ message: 'No matching user' });
-    }
-  } catch (e) {
-    res.status(500).send({ message: e.message });
-  }
-});
+// userRouter.post('/signin', async (req, res) => {
+//   try {
+//     const mobile = req.body.mobile;
+//     const password = req.body.password;
+//     const user = await User.findOne({ mobile: mobile });
+//     if (user) {
+//       if (bcrypt.compareSync(password, user.password)) {
+//         res.status(200).send({
+//           _id: user._id,
+//           name: user.name,
+//           mobile: user.mobile,
+//           city: user.city,
+//           pincode: user.pincode,
+//           isAdmin: user.isAdmin,
+//           token: generateUserToken(user),
+//         });
+//       } else {
+//         res.status(401).send({ message: "Incorrect Password" });
+//       }
+//     } else {
+//       res.status(401).send({ message: 'No matching user' });
+//     }
+//   } catch (e) {
+//     res.status(500).send({ message: e.message });
+//   }
+// });
 
 userRouter.get('/:userid', isAuth, async (req, res) => {
   try {

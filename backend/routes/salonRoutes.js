@@ -42,28 +42,28 @@ salonRouter.post('/', async (req, res) => {
   }
 });
 
-salonRouter.post('/signin', async (req, res) => {
-  try {
-    const mobile = req.body.mobile;
-    const bodyPassword = req.body.password;
-    const salon = await Salon.findOne({ mobile: mobile }).select('+password');
-    if (salon) {
-      if (bcrypt.compareSync(bodyPassword, salon.password)) {
-        const { password, ...salonData } = salon._doc;
-        res.status(200).send({
-          salon: salonData,
-          token: generateSalonToken(salonData),
-        });
-      } else {
-        res.status(401).send({ message: 'Invalid Password' });
-      }
-    } else {
-      res.status(401).send({ message: 'User not found' });
-    }
-  } catch (e) {
-    res.status(500).send({ message: e.message });
-  }
-});
+// salonRouter.post('/signin', async (req, res) => {
+//   try {
+//     const mobile = req.body.mobile;
+//     const bodyPassword = req.body.password;
+//     const salon = await Salon.findOne({ mobile: mobile }).select('+password');
+//     if (salon) {
+//       if (bcrypt.compareSync(bodyPassword, salon.password)) {
+//         const { password, ...salonData } = salon._doc;
+//         res.status(200).send({
+//           salon: salonData,
+//           token: generateSalonToken(salonData),
+//         });
+//       } else {
+//         res.status(401).send({ message: 'Invalid Password' });
+//       }
+//     } else {
+//       res.status(401).send({ message: 'User not found' });
+//     }
+//   } catch (e) {
+//     res.status(500).send({ message: e.message });
+//   }
+// });
 
 salonRouter.get('/:salonid', async (req, res) => {
   try {

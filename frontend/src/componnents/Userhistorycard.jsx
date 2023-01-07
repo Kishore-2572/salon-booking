@@ -77,19 +77,21 @@ const Userhistorycard = ({ bookingDetails }) => {
               <p>{suggestedTime}</p>
             </div>
             <div className="uhbtn-div d-flex">
-              <button
-                className="uhcard-btn"
-                style={{ backgroundColor: 'green' }}
-              >
+              <button className="uhcard-btn primary-btn">
                 <i className="fa-solid fa-circle-check"></i> Accept
               </button>
-              <button className="uhcard-btn" style={{ backgroundColor: 'red' }}>
+              <button className="uhcard-btn secondary-btn">
                 <i className="fa-solid fa-circle-xmark"></i> Reject
               </button>
             </div>
           </div>
         </>
-      ) :stateOfProcess==='2'?(<div className='d-flex' style={{gap:"1rem", alignItems:"center"}}><h5>Reason : </h5><p>{bookingDetails.message}</p></div>): (
+      ) : stateOfProcess === '2' ? (
+        <div className="d-flex" style={{ gap: '1rem', alignItems: 'center' }}>
+          <h5>Reason : </h5>
+          <p>{bookingDetails.message}</p>
+        </div>
+      ) : (
         <div></div>
       )}
     </div>

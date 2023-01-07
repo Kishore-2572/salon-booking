@@ -28,7 +28,6 @@ const Userprofile = () => {
   const [city, setCity] = useState('');
   const [pincode, setPincode] = useState('');
   const [history, setHistory] = useState([]);
-  // const [isDataModified, setIsDataModified] = false;
 
   useEffect(() => {
     const getDetails = async () => {
