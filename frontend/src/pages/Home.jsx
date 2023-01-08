@@ -1,7 +1,6 @@
 import React,{ useEffect } from 'react';
 import { useContext } from 'react';
 import { store } from '../store';
-import Login from './Login';
 import Salonhome from './salon/Salonhome';
 import Userhome from './user/Userhome';
 
@@ -12,7 +11,6 @@ const Home = () => {
   useEffect(() => {
     if (!user) window.location.href='/login';
   }, [user]);
-  console.log(user.isAdmin);
   return (user && user.isAdmin) ? <Salonhome /> : <Userhome />;
 };
 

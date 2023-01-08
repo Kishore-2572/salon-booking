@@ -7,11 +7,15 @@ bookingRouter.post('/user', isAuth, async (req, res) => {
   try {
     const time = req.body.time;
     const userId = req.user._id;
+    const customerName = req.body.customerName;
+    const customerMobile = req.body.customerMobile;
     const salonId = req.body.salonId;
     const newBooking = new Booking({
       userId: userId,
       salonId: salonId,
       requestedTime: time,
+      customerName: customerName,
+      customerMobile: customerMobile,
     });
     const booking = await newBooking.save();
     res.status(200).send({ booking: booking, message: 'Booking Suceess' });
@@ -22,7 +26,9 @@ bookingRouter.post('/user', isAuth, async (req, res) => {
 
 bookingRouter.get('/user', isAuth, async (req, res) => {
   try {
-    const userBookings = await Booking.find({ userId: req.user._id }).sort({updatedAt: -1});
+    const userBookings = await Booking.find({ userId: req.user._id }).sort({
+      updatedAt: -1,
+    });
     res.status(200).send(userBookings);
   } catch (e) {
     res.status(500).send({ message: e.message });

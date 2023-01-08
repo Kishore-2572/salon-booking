@@ -70,20 +70,11 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
-            {user &&
-              !user.isAdmin && (
-                <>
-                  <Route path="/saloninfo/:salonid" element={<Saloninfo />} />
-                  <Route path="/profile/" element={<Profile />} />
-                  <Route path="/salonregister" element={<Salonsignup />} />
-                </>
-              )}
-            {user && user.isAdmin && (
+            <Route path="/profile/" element={<Profile />} />
+            {user && !user.isAdmin && (
               <>
-                <Route
-                  path="/salonprofile/:salonid"
-                  element={<Salonprofile />}
-                />
+                <Route path="/saloninfo/:salonid" element={<Saloninfo />} />
+                <Route path="/salonregister" element={<Salonsignup />} />
               </>
             )}
           </Routes>

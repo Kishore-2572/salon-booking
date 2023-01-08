@@ -12,8 +12,16 @@ const Bookingmodel = mongoose.Schema(
       ref: 'Salon',
       required: true,
     },
+    customerName: {
+      type: String,
+      required: true,
+    },
+    customerMobile: {
+      type: String,
+      required: true,
+    },
     requestedTime: { type: String },
-    suggestedTime:{ type: String, default: '' },
+    suggestedTime: { type: String, default: '' },
     acceptedTime: { type: String, default: '' },
     stateOfProcess: { type: Number, default: 0 },
     message: { type: String, default: '' },

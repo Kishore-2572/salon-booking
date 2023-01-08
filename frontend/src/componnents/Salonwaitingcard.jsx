@@ -9,7 +9,7 @@ const Salonwaitingcard = () => {
         <div className="swcard-header">
           <h3>Kishore </h3>
           <a href="tel:+6379306614" className="historycard-call">
-            <i class="fa-solid fa-phone"></i>
+            <i className="fa-solid fa-phone"></i>
             6379306614
           </a>
         </div>

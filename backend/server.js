@@ -12,7 +12,7 @@ mongoose
   .connect(process.env.MONGO_URL)
   .then(() => {
     app.listen(process.env.PORT, () =>
-      console.log(`Example app listening on port ${process.env.PORT}!`)
+      console.log(`DB connected Server listning at Port ${process.env.PORT}!`)
     );
   })
   .catch((e) => console.log(e));

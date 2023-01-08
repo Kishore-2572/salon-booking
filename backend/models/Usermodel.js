@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Usermodel = mongoose.Schema(
   {
     name: { type: String, required: true },
-    mobile: { type: Number, required: true, unique: true },
+    mobile: { type: String, required: true, unique: true },
     city: { type: String, required: true },
     pincode: { type: Number, required: true },
     password: { type: String, required: true },

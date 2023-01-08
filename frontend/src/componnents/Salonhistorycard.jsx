@@ -1,6 +1,10 @@
 import React from 'react';
 
-const Salonhistorycard = () => {
+const Salonhistorycard = ({data}) => {
+
+  // const [customer,setCustomer]=
+
+
   const accepted = true;
   return (
     <div
@@ -10,18 +14,18 @@ const Salonhistorycard = () => {
       <div className="uhcard-header">
         <h3>Kishore </h3>
         <a href="tel:+6379306614" className="historycard-call">
-        <i class="fa-solid fa-phone"></i>
+        <i className="fa-solid fa-phone"></i>
           6379306614
         </a>
         {accepted ? (
           <p>
             {' '}
-            <i class="fa-solid fa-circle-check"></i> Accepted
+            <i className="fa-solid fa-circle-check"></i> Accepted
           </p>
         ) : (
           <p>
             {' '}
-            <i class="fa-solid fa-ban"></i>Declined
+            <i className="fa-solid fa-ban"></i>Declined
           </p>
         )}
       </div>
