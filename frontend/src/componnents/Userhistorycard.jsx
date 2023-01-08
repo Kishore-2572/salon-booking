@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
+import { toast } from 'react-toastify';
+import { getError } from '../util';
 
 function formatTime(timeString) {
   const [hourString, minute] = timeString.split(':');
@@ -13,7 +15,7 @@ function formatDate(dateString) {
   return date + '/' + month + '/' + year;
 }
 
-const Userhistorycard = ({ bookingDetails }) => {
+const Userhistorycard = ({ bookingDetails, user, callback, fetch }) => {
   const [requestedTime, setRequestedTime] = useState('');
   const [acceptedTime, setAcceptedTime] = useState('');
   const [suggestedTime, setSuggestedTime] = useState('');
@@ -41,6 +43,39 @@ const Userhistorycard = ({ bookingDetails }) => {
     };
     fillDetails();
   }, []);
+
+  const submitHandler = async (e) => {
+    if (e.target.value === 'accept') {
+      try {
+        const response = await axios.post(
+          '/booking/salon',
+          {
+            stateOfProcess: 1,
+            bookingId: bookingDetails._id,
+            suggestion: true,
+          },
+          { headers: { authorization: `Bearer ${user.token}` } }
+        );
+      } catch (e) {
+        toast.error(getError(e));
+      }
+    } else {
+      try {
+        const response = await axios.post(
+          '/booking/salon',
+          {
+            stateOfProcess: 2,
+            bookingId: bookingDetails._id,
+          },
+          { headers: { authorization: `Bearer ${user.token}` } }
+        );
+      } catch (e) {
+        toast.error(getError(e));
+      }
+    }
+    callback(!fetch);
+  };
+
   return (
     <div className="uhcard">
       <div className="uhcard-header">
@@ -77,10 +112,18 @@ const Userhistorycard = ({ bookingDetails }) => {
               <p>{suggestedTime}</p>
             </div>
             <div className="uhbtn-div d-flex">
-              <button className="uhcard-btn primary-btn">
+              <button
+                className="uhcard-btn primary-btn"
+                value="accept"
+                onClick={submitHandler}
+              >
                 <i className="fa-solid fa-circle-check"></i> Accept
               </button>
-              <button className="uhcard-btn secondary-btn">
+              <button
+                className="uhcard-btn secondary-btn"
+                value="reject"
+                onClick={submitHandler}
+              >
                 <i className="fa-solid fa-circle-xmark"></i> Reject
               </button>
             </div>

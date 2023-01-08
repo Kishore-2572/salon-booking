@@ -28,6 +28,7 @@ const Userprofile = () => {
   const [city, setCity] = useState('');
   const [pincode, setPincode] = useState('');
   const [history, setHistory] = useState([]);
+  const [fetch, setFetch] = useState(true);
 
   useEffect(() => {
     const getDetails = async () => {
@@ -47,7 +48,7 @@ const Userprofile = () => {
       dispatch({ type: 'REQUEST_COMPLETED' });
     };
     getDetails();
-  }, []);
+  }, [fetch]);
   const submitHandler = async (e) => {
     e.preventDefault();
     if (
@@ -143,7 +144,15 @@ const Userprofile = () => {
               <h1>History</h1>
               <div className="userhistory-cards">
                 {history.map((data, idx) => {
-                  return <Userhistorycard key={idx} bookingDetails={data} />;
+                  return (
+                    <Userhistorycard
+                      key={idx}
+                      bookingDetails={data}
+                      user={user}
+                      callback={setFetch}
+                      fetch={fetch}
+                    />
+                  );
                 })}
               </div>
             </div>

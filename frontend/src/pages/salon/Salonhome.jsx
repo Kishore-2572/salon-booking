@@ -24,6 +24,7 @@ const Salonhome = () => {
   const { user } = state;
   const [history, setHistory] = useState([]);
   const [waiting, setWaiting] = useState([]);
+  const [fetch,setFetch]=useState(false);
 
   useEffect(() => {
     const getDetails = async () => {
@@ -49,7 +50,7 @@ const Salonhome = () => {
       dispatch({ type: 'REQUEST_COMPLETED' });
     };
     getDetails();
-  }, []);
+  }, [fetch]);
   return (
     <div className="salonhome">
       {loading ? (
@@ -63,7 +64,7 @@ const Salonhome = () => {
                 <h3>Empty</h3>
               ) : (
                 waiting.map((e, idx) => {
-                  return <Salonwaitingcard key={idx} data={e} />;
+                  return <Salonwaitingcard key={idx} data={e} user={user} callback={setFetch} fetch={fetch} />;
                 })
               )}
             </div>

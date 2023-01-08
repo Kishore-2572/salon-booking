@@ -1,23 +1,48 @@
 import React from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
-const Salonhistorycard = ({data}) => {
+function formatTime(timeString) {
+  const [hourString, minute] = timeString.split(':');
+  const hour = +hourString % 24;
+  return (hour % 12 || 12) + ':' + minute + (hour < 12 ? ' AM' : ' PM');
+}
 
-  // const [customer,setCustomer]=
+function formatDate(dateString) {
+  const [year, month, date] = dateString.split('-');
+  return date + '/' + month + '/' + year;
+}
 
+const Salonhistorycard = ({ data }) => {
+  const [acceptance, setAcceptance] = useState(true);
+  const [requestedTime, setRequestedTime] = useState('');
+  const [acceptedTime, setAcceptedTime] = useState('');
+  const [requestedDate, setRequestedDate] = useState('');
+  const [acceptedDate, setAcceptedDate] = useState('');
 
-  const accepted = true;
+  useEffect(() => {
+    setAcceptance(data.stateOfProcess.toString() === '1');
+    const request = data.requestedTime.toString().split('=');
+    setRequestedDate(formatDate(request[1]));
+    setRequestedTime(formatTime(request[0]));
+    const accept = data.acceptedTime.toString().split('=');
+    if (accept.length !== 1) {
+      setAcceptedDate(formatDate(accept[1]));
+      setAcceptedTime(formatTime(accept[0]));
+    }
+  }, []);
   return (
     <div
       className="salonhistory-card"
-      style={{ border: accepted ? '1px solid white' : '1px solid red' }}
+      style={{ border: acceptance ? '1px solid white' : '1px solid red' }}
     >
       <div className="uhcard-header">
-        <h3>Kishore </h3>
+        <h3>{data.customerName} </h3>
         <a href="tel:+6379306614" className="historycard-call">
-        <i className="fa-solid fa-phone"></i>
-          6379306614
+          <i className="fa-solid fa-phone"></i>
+          {data.customerMobile}
         </a>
-        {accepted ? (
+        {acceptance ? (
           <p>
             {' '}
             <i className="fa-solid fa-circle-check"></i> Accepted
@@ -32,13 +57,19 @@ const Salonhistorycard = ({data}) => {
       <div className="uhcard-dates">
         <div className="uhcard-requested-dt">
           <h5>Requested Time</h5>
-          <p>25/07/2022</p>
-          <p>05:10 PM</p>
+          <p>{requestedDate}</p>
+          <p>{requestedTime}</p>
         </div>
+        {!acceptance && (
+          <div>
+            <h5>Message</h5>
+            <p>{data.message === '' ? 'Time Suggested' : data.message}</p>
+          </div>
+        )}
         <div className="uhcard-accepted-dt">
           <h5>Accepted Time</h5>
-          <p>25/07/2022</p>
-          <p>05:10 PM</p>
+          <p>{acceptedDate === '' ? '- - - - -' : acceptedDate}</p>
+          <p>{acceptedTime === '' ? '- - - - -' : acceptedTime}</p>
         </div>
       </div>
     </div>
