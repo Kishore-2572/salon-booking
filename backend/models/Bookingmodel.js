@@ -20,6 +20,10 @@ const Bookingmodel = mongoose.Schema(
       type: String,
       required: true,
     },
+    salonName:{
+      type:String,
+      required:true,
+    },
     requestedTime: { type: String },
     suggestedTime: { type: String, default: '' },
     acceptedTime: { type: String, default: '' },

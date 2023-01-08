@@ -9,11 +9,13 @@ bookingRouter.post('/user', isAuth, async (req, res) => {
     const userId = req.user._id;
     const customerName = req.body.customerName;
     const customerMobile = req.body.customerMobile;
+    const salonName=req.body.salonName;
     const salonId = req.body.salonId;
     const newBooking = new Booking({
       userId: userId,
       salonId: salonId,
       requestedTime: time,
+      salonName:salonName,
       customerName: customerName,
       customerMobile: customerMobile,
     });

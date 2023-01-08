@@ -44,7 +44,7 @@ const Userhistorycard = ({ bookingDetails }) => {
   return (
     <div className="uhcard">
       <div className="uhcard-header">
-        <h3>Hello salon</h3>
+        <h3>{bookingDetails.salonName}</h3>
         <p>
           State of process :{' '}
           {stateOfProcess === '0'

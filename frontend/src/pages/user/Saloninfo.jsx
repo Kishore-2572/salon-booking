@@ -76,15 +76,22 @@ const Saloninfo = () => {
       try {
         const resonse = await axios.post(
           '/booking/user',
-          { time: time + '=' + date, salonId: salonid },
+          {
+            time: time + '=' + date,
+            salonId: salonid,
+            salonName: salon.name,
+            customerName: user.name,
+            customerMobile: user.mobile,
+          },
           {
             headers: { authorization: `Bearer ${user.token}` },
           }
         );
+        toast.success('Slot booked check history for details');
       } catch (e) {
         toast.error(getError(e));
       }
-      toast.success('Slot booked check history for details');
+      
       setDialogOpen(false);
     } else {
       toast.error('Booking Canceled');

@@ -52,6 +52,10 @@ li {
   animation: progress-7x9cg2 1.7999999999999998s infinite;
 }
 
+input[type="time"]::-webkit-calendar-picker-indicator{
+  background-color:white;
+  }
+
 @keyframes progress-7x9cg2 {
   0% {
      background-position: -150% 0,-150% 0;
@@ -1323,8 +1327,16 @@ option,
   color: white;
 }
 
+.secondary-btn:hover{
+  background-color: wheat;
+  color: black;
+}
+
 .secondary-btn i{
   color: white;
+}
+.secondary-btn:hover i{
+  color: black;
 }
 .salonhome-right {
   width: 50%;
