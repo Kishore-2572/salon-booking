@@ -24,10 +24,10 @@ app.use(
 app.use(express.json());
 app.use(core());
 
-app.use(express.static(path.join(__dirname,'/frontend/build')));
-app.get("*",(req,res) => {
-  res.sendFile(path.join(__dirname,'/frontend/build/index.html'));
-})
+// app.use(express.static(path.join(__dirname,'/frontend/build')));
+// app.get("*",(req,res) => {
+//   res.sendFile(path.join(__dirname,'/frontend/build/index.html'));
+// })
 
 app.use('/api/login', loginRoute);
 app.use('/api/user', userRouter);
