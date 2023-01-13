@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import {  useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Servicessvg from '../../assets/services.svg';
 import Logo from '../../assets/logo-black.png';
 import Button from '@mui/material/Button';
@@ -50,7 +50,9 @@ const Saloninfo = () => {
     dispatch({ type: 'FETCH_REQUEST' });
     const getSalonDetails = async () => {
       try {
-        const { data } = await axios.get(`https://mushy-pear-cod.cyclic.app/api/salon/${salonid}`);
+        const { data } = await axios.get(
+          `https://mushy-pear-cod.cyclic.app/api/salon/${salonid}`
+        );
         setSalon(data);
         setOpenTime(formatTime(data.openingTime));
         setCloseTime(formatTime(data.closingTime));
@@ -90,7 +92,7 @@ const Saloninfo = () => {
       } catch (e) {
         toast.error(getError(e));
       }
-      
+
       setDialogOpen(false);
     } else {
       toast.error('Booking Canceled');
@@ -99,7 +101,11 @@ const Saloninfo = () => {
   };
 
   const getMinDate = () => {
-    return moment(new Date()).format('YYYY-MM-DD');
+    if (salon.isOpenToday) {
+      return moment(new Date()).format('YYYY-MM-DD');
+    } else {
+      return moment(new Date()).add(1, 'day').format('YYYY-MM-DD');
+    }
   };
   return (
     <div className="saloninfo">
@@ -112,9 +118,12 @@ const Saloninfo = () => {
               <div className="book-now">
                 <h1>{salon.name}</h1>
                 <div className="saloninfo-btn-div">
-                  <button className="saloninfo-btn" onClick={handleClickOpen}>
+                  <button
+                    className="saloninfo-btn"
+                    onClick={handleClickOpen}
+                  >
                     <img src={Logo} />
-                    BOOK NOW
+                    {salon.isOpenToday ? 'BOOK NOW' : 'Today Closed'}
                   </button>
                 </div>
               </div>

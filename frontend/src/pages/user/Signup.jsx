@@ -41,13 +41,16 @@ const Signup = () => {
     } else {
       try {
         dispatch({ type: 'SENDING_REQUEST' });
-        const response = await axios.post('https://mushy-pear-cod.cyclic.app/api/user/signup', {
-          name,
-          mobile,
-          city,
-          pincode,
-          password,
-        });
+        const response = await axios.post(
+          'https://mushy-pear-cod.cyclic.app/api/user/signup',
+          {
+            name,
+            mobile,
+            city,
+            pincode,
+            password,
+          }
+        );
         // console.log(response);
         const { data } = response;
         ctxDispatch({ type: 'SIGN_IN', payload: data });
@@ -65,106 +68,112 @@ const Signup = () => {
   }, [user]);
   return (
     <div className="signup">
-      <div className="signup-form-container">
-        <div className="signup-header">
-          <h1>SIGN UP</h1>
-          <p>
-            Already a user?{' '}
-            <Link to="/login" className="signup-to-login-link">
-              Login here
-            </Link>{' '}
-          </p>
-        </div>
-        <div className="signup-form-div">
-          <div className="signup-form-labels">
-            <p className="signup-form-label">NAME</p>
-            <p className="signup-form-label">MOBILE</p>
-            <p className="signup-form-label">CITY</p>
-            <p className="signup-form-label">PIN CODE</p>
-            <p className="signup-form-label">PASSWORD</p>
-            <p className="signup-form-label">CONFIRM-PASSWORD</p>
-            {/* <p className="signup-form-label">OTP <button className='otp-btn'>Send OTP</button></p> */}
-          </div>
-          <div className="signup-form-inputs">
-            <form
-              id="signup-form"
-              className="signup-form"
-              onSubmit={submitHandler}
-            >
-              <input
-                className="signup-input"
-                type="text"
-                name="name"
-                placeholder="Enter your name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-              <input
-                className="signup-input"
-                type="tel"
-                name="mobile"
-                placeholder="Enter your mobile number"
-                value={mobile}
-                onChange={(e) => setMobile(e.target.value)}
-                required
-              />
-              <input
-                className="signup-input"
-                type="text"
-                name="city"
-                placeholder="Enter your city"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-                required
-              />
-              <input
-                className="signup-input"
-                type="number"
-                name="pincoe"
-                placeholder="Enter your PIN code"
-                value={pincode}
-                onChange={(e) => setPincode(e.target.value)}
-                required
-              />
-              <input
-                className="signup-input"
-                type="password"
-                name="password"
-                placeholder="Enter your password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-              <input
-                className="signup-input"
-                type="password"
-                name="cpassword"
-                placeholder="Retype the password"
-                value={cpassword}
-                onChange={(e) => setCpassword(e.target.value)}
-                required
-              />
-              {/* <input
+      {loading ? (
+        <div className="progress"></div>
+      ) : (
+        <>
+          <div className="signup-form-container">
+            <div className="signup-header">
+              <h1>SIGN UP</h1>
+              <p>
+                Already a user?{' '}
+                <Link to="/login" className="signup-to-login-link">
+                  Login here
+                </Link>{' '}
+              </p>
+            </div>
+            <div className="signup-form-div">
+              <div className="signup-form-labels">
+                <p className="signup-form-label">NAME</p>
+                <p className="signup-form-label">MOBILE</p>
+                <p className="signup-form-label">CITY</p>
+                <p className="signup-form-label">PIN CODE</p>
+                <p className="signup-form-label">PASSWORD</p>
+                <p className="signup-form-label">CONFIRM-PASSWORD</p>
+                {/* <p className="signup-form-label">OTP <button className='otp-btn'>Send OTP</button></p> */}
+              </div>
+              <div className="signup-form-inputs">
+                <form
+                  id="signup-form"
+                  className="signup-form"
+                  onSubmit={submitHandler}
+                >
+                  <input
+                    className="signup-input"
+                    type="text"
+                    name="name"
+                    placeholder="Enter your name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                  />
+                  <input
+                    className="signup-input"
+                    type="tel"
+                    name="mobile"
+                    placeholder="Enter your mobile number"
+                    value={mobile}
+                    onChange={(e) => setMobile(e.target.value)}
+                    required
+                  />
+                  <input
+                    className="signup-input"
+                    type="text"
+                    name="city"
+                    placeholder="Enter your city"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                    required
+                  />
+                  <input
+                    className="signup-input"
+                    type="number"
+                    name="pincoe"
+                    placeholder="Enter your PIN code"
+                    value={pincode}
+                    onChange={(e) => setPincode(e.target.value)}
+                    required
+                  />
+                  <input
+                    className="signup-input"
+                    type="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                  <input
+                    className="signup-input"
+                    type="password"
+                    name="cpassword"
+                    placeholder="Retype the password"
+                    value={cpassword}
+                    onChange={(e) => setCpassword(e.target.value)}
+                    required
+                  />
+                  {/* <input
                 className="signup-input"
                 type="number"
                 name="otp"
                 placeholder="Enter the OTP"
                 required
               /> */}
-            </form>
+                </form>
+              </div>
+            </div>
+            <div className="signup-btn-div flex-center">
+              <button form="signup-form" type="submit" className="signup-btn">
+                <i className="fa-solid fa-arrow-right "></i>Signup
+              </button>
+            </div>
           </div>
-        </div>
-        <div className="signup-btn-div flex-center">
-          <button form="signup-form" type="submit" className="signup-btn">
-            <i className="fa-solid fa-arrow-right "></i>Signup
-          </button>
-        </div>
-      </div>
-      <div className="signup-img-container">
-        <img className="signup-logo" src={logo} alt="" />
-        <img className="signup-svg" src={Auth} alt="" />
-      </div>
+          <div className="signup-img-container">
+            <img className="signup-logo" src={logo} alt="" />
+            <img className="signup-svg" src={Auth} alt="" />
+          </div>
+        </>
+      )}
     </div>
   );
 };
