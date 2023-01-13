@@ -24,13 +24,6 @@ function App() {
     window.location.href('/login');
   };
 
-  // window.onscroll = () => {
-  //   console.log('+++++++++++');
-  //   setIsScrolled(window.pageYOffset === 0 ? false : true);
-  //   console.log('=========');
-  //   return () => (window.onscroll = null);
-  // };
-
   return (
     <BrowserRouter>
       <div className="App">
@@ -46,7 +39,11 @@ function App() {
               <div className="nav-item-profile">
                 <Link to="/profile/" className="nav-link">
                   <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJblmG352FTrVDWaSGC-e67GuM0_WnY5WgEQ&usqp=CAU"
+                    src={
+                      user.image
+                        ? `data:image/jpg;base64,${user.image}`
+                        : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYduP9erFkId0aNuDIMKrBik4-nBSh0NSy5Q&usqp=CAU'
+                    }
                     style={{
                       width: '3rem',
                       height: '3rem',

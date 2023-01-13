@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const e = require('express');
 
 const isAuth = (req, res, next) => {
+  
   const authorization = req.headers.authorization;
   if (authorization) {
     const token = authorization.slice(7, authorization.length);
@@ -48,8 +49,6 @@ const generateSalonToken = (salon) => {
       openingTime: salon.openingTime,
       closingTime: salon.closingTime,
       isOpenToday: salon.isOpenToday,
-      salonPhotos: salon.salonphotos,
-      stylistPhotos: salon.stylistPhotos,
     },
     process.env.SECRET_KEY,
     { expiresIn: '30d' }

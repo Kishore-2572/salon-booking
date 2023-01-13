@@ -44,30 +44,33 @@ li {
 .progress {
   height: 7px;
   width: 100%;
-  background: linear-gradient(#fcfcfe 0 0),
-      linear-gradient(#fcfcfe 0 0),
-      #020202;
+  background: linear-gradient(#fcfcfe 0 0), linear-gradient(#fcfcfe 0 0),
+    #020202;
   background-size: 60% 100%;
   background-repeat: no-repeat;
   animation: progress-7x9cg2 1.7999999999999998s infinite;
 }
 
-input[type="time"]::-webkit-calendar-picker-indicator{
-  background-color:white;
-  }
+input[type='time']::-webkit-calendar-picker-indicator {
+  background-color: white;
+}
 
 @keyframes progress-7x9cg2 {
   0% {
-     background-position: -150% 0,-150% 0;
+    background-position: -150% 0, -150% 0;
   }
 
   66% {
-     background-position: 250% 0,-150% 0;
+    background-position: 250% 0, -150% 0;
   }
 
   100% {
-     background-position: 250% 0, 250% 0;
+    background-position: 250% 0, 250% 0;
   }
+}
+
+::file-selector-button {
+  display: none;
 }
 
 /* ====================  Main ==================== */
@@ -406,7 +409,7 @@ ToastContainer {
   width: 30%;
 }
 
-.otp-btn{
+.otp-btn {
   border-radius: 1rem;
   width: 7rem;
   height: 2rem;
@@ -455,7 +458,6 @@ ToastContainer {
     top: 45rem;
     margin: 1rem auto;
     width: 100%;
-    
   }
   .signup-img-container {
     width: 0;
@@ -877,7 +879,8 @@ ToastContainer {
   position: relative;
 }
 
-.profile-img img {
+.profile-img img,
+.profile-img-blur-input {
   width: 10rem;
   height: 10rem;
   object-fit: cover;
@@ -897,6 +900,18 @@ ToastContainer {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.profile-img:hover .profile-img-blur-input {
+  width: 20rem;
+  height: 20rem;
+  overflow: hidden;
+  background: transparent;
+  /* top: 0; */
+  left: 0;
+  position: absolute;
+  z-index: 50;
+  cursor: pointer;
 }
 
 .profile-img-blur p {
@@ -1025,18 +1040,17 @@ h5 {
   margin-bottom: 2rem;
 }
 
-.suggestion{
+.suggestion {
   align-items: center;
   gap: 2rem;
   justify-content: space-between;
 }
 
-.uhbtn-div{
+.uhbtn-div {
   gap: 2rem;
-
 }
 
-.uhcard-btn{
+.uhcard-btn {
   height: 2.5rem;
   width: 5.5rem;
   font-size: 1rem;
@@ -1046,7 +1060,7 @@ h5 {
   font-weight: bold;
 }
 
-.uhcard-btn i{
+.uhcard-btn i {
   color: #020202;
 }
 
@@ -1288,7 +1302,7 @@ h5 {
   justify-content: space-around;
 }
 
-.swcard-req{
+.swcard-req {
   margin-top: 1rem;
 }
 .reject-msg {
@@ -1321,25 +1335,25 @@ option,
 .swcard-btn i {
   color: black;
 }
-.primary-btn{
+.primary-btn {
   background-color: white;
 }
 
-.secondary-btn{
+.secondary-btn {
   background-color: black;
-  border: 2px solid white ;
+  border: 2px solid white;
   color: white;
 }
 
-.secondary-btn:hover{
+.secondary-btn:hover {
   background-color: wheat;
   color: black;
 }
 
-.secondary-btn i{
+.secondary-btn i {
   color: white;
 }
-.secondary-btn:hover i{
+.secondary-btn:hover i {
   color: black;
 }
 .salonhome-right {
@@ -1460,7 +1474,7 @@ option,
 .sp-inputs-right {
   width: 60%;
   height: auto;
-  gap: 1.1rem;
+  gap: 1.35rem;
 }
 
 .sp-text-input {
@@ -1495,13 +1509,14 @@ option,
   width: 12rem;
   border-radius: 1.5rem;
   padding: 0.2rem;
+  cursor: pointer;
 }
 
 .salonphotos {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 1rem;
+  justify-content: start;
+  gap: 2rem;
   margin: 1rem auto;
 }
 
@@ -1517,7 +1532,7 @@ option,
   min-height: 100%;
   max-width: 100%;
   max-height: 100%;
-  min-width: 100;
+  min-width: 100%;
   border-radius: 1rem;
 }
 
@@ -1527,8 +1542,12 @@ option,
   border: 1px dashed white;
   border-radius: 1rem;
   cursor: pointer;
+  
 }
 
+.salon-img-input{
+  display: none;
+}
 .salonphoto-add:hover,
 .stylistphoto-add:hover {
   background-color: rgba(253, 253, 253, 0.2);
@@ -1537,6 +1556,7 @@ option,
 .salonphoto-add > i,
 .stylistphoto-add > i {
   font-size: 3rem;
+  cursor: pointer;
 }
 
 .stylistphoto {
@@ -1569,11 +1589,6 @@ option,
   font-weight: bold;
 }
 
-@media only screen and (max-width: 1000px) and (min-width: 850px) {
-  .salonphotos {
-    justify-content: space-around;
-  }
-}
 @media only screen and (max-width: 850px) and (min-width: 280px) {
   .sp-contents {
     flex-direction: column;
@@ -1594,9 +1609,5 @@ option,
     width: 95%;
     padding: 0;
     margin: 1rem auto;
-  }
-  .salonphotos {
-    justify-content: space-evenly;
-    gap: 2rem;
   }
 }

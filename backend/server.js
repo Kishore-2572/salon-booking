@@ -5,7 +5,7 @@ const core = require('cors');
 const userRouter = require('./routes/userRoutes.js');
 const salonRouter = require('./routes/salonRoutes.js');
 const bookingRouter = require('./routes/bookingRoutes.js');
-const loginRoute=require('./routes/loginRoute');
+const loginRoute = require('./routes/loginRoute');
 const mongoose = require('mongoose');
 
 mongoose
@@ -17,7 +17,9 @@ mongoose
   })
   .catch((e) => console.log(e));
 
-app.use(express.urlencoded({ extended: true }));
+app.use(
+  express.urlencoded({ extended: true, parameterLimit: 100000, limit: '500mb' })
+);
 app.use(express.json());
 app.use(core());
 

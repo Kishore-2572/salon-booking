@@ -13,15 +13,17 @@ function reducer(state, action) {
     case 'SIGN_IN':
       return { ...state, user: action.payload };
     case 'SIGN_OUT':
-      return { ...state, user: null};
+      return { ...state, user: null };
+    case 'ADD_IMAGE':
+      const user=state.user;
+      return { ...state, user: { ...user, image: action.payload } };
     default:
       return state;
   }
 }
 
-export function Provider(props){
-    const [state,dispatch]=useReducer(reducer,initialState);
-    const value={state,dispatch};
-    return <store.Provider value={value} >{props.children}</store.Provider>;
-
-} 
+export function Provider(props) {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const value = { state, dispatch };
+  return <store.Provider value={value}>{props.children}</store.Provider>;
+}

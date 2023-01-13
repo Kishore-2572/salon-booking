@@ -42,29 +42,6 @@ salonRouter.post('/', async (req, res) => {
   }
 });
 
-// salonRouter.post('/signin', async (req, res) => {
-//   try {
-//     const mobile = req.body.mobile;
-//     const bodyPassword = req.body.password;
-//     const salon = await Salon.findOne({ mobile: mobile }).select('+password');
-//     if (salon) {
-//       if (bcrypt.compareSync(bodyPassword, salon.password)) {
-//         const { password, ...salonData } = salon._doc;
-//         res.status(200).send({
-//           salon: salonData,
-//           token: generateSalonToken(salonData),
-//         });
-//       } else {
-//         res.status(401).send({ message: 'Invalid Password' });
-//       }
-//     } else {
-//       res.status(401).send({ message: 'User not found' });
-//     }
-//   } catch (e) {
-//     res.status(500).send({ message: e.message });
-//   }
-// });
-
 salonRouter.get('/:salonid', async (req, res) => {
   try {
     const salon = await Salon.findById(req.params.salonid);
@@ -82,17 +59,37 @@ salonRouter.put('/:salonid', isAuth, async (req, res) => {
     salon.mobile = req.body.mobile || salon.mobile;
     salon.address = req.body.address || salon.address;
     salon.city = req.body.city || salon.city;
-    salon.state = req.body.state || salon.state;
+    salon.state = req.body.salonstate || salon.state;
     salon.pincode = req.body.pincode || salon.pincode;
+    salon.salonPhotos = req.body.salonPhotos || salon.salonPhotos;
+    salon.stylistPhotos = req.body.stylistPhotos || salon.stylistPhotos;
+    salon.openingTime = req.body.openTime;
+    salon.closingTime = req.body.closeTime;
+    salon.isOpenToday = req.body.isOpenToday;
     if (req.body.services) {
-      salon.services = req.body.services.split(',');
+      salon.services = req.body.services;
     }
     if (req.body.password) {
       salon.password = bcrypt.hashSync(req.body.password);
     }
     const updatedSalon = await salon.save();
     const { password, ...salonData } = updatedSalon._doc;
-    res.status(200).send({ salonData, token: generateSalonToken(salonData) });
+    res.status(200).send({
+      _id: salonData._id,
+      name: salonData.name,
+      email: salonData.email,
+      mobile: salonData.mobile,
+      address: salonData.address,
+      city: salonData.city,
+      state: salonData.state,
+      pincode: salonData.pincode,
+      openingTime: salonData.openingTime,
+      closingTime: salonData.closingTime,
+      services: salonData.services,
+      isAdmin: salonData.isAdmin,
+      isOpenToday: salonData.isOpenToday,
+      token: generateSalonToken(salonData),
+    });
   } catch (e) {
     res.status(500).send({ message: e.message });
   }

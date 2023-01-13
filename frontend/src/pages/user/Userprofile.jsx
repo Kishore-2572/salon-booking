@@ -29,6 +29,7 @@ const Userprofile = () => {
   const [pincode, setPincode] = useState('');
   const [history, setHistory] = useState([]);
   const [fetch, setFetch] = useState(true);
+  const [base64String, setBase64String] = useState(user.image);
 
   useEffect(() => {
     const getDetails = async () => {
@@ -79,6 +80,22 @@ const Userprofile = () => {
       dispatch({ type: 'REQUEST_COMPLETED' });
     }
   };
+
+  const imghandler = () => {
+    var file = document.querySelector('input[type=file]')['files'][0];
+    var reader = new FileReader();
+    reader.onload = function () {
+      const base64String = reader.result
+        .replace('data:', '')
+        .replace(/^.+,/, '');
+      setBase64String(base64String);
+      ctxDispatch({ type: 'ADD_IMAGE', payload: base64String });
+      const updatedUser = user;
+      user.image = base64String;
+      localStorage.setItem('user', JSON.stringify(updatedUser));
+    };
+    reader.readAsDataURL(file);
+  };
   return (
     <div className="userprofile">
       {loading ? (
@@ -89,10 +106,20 @@ const Userprofile = () => {
             <div className="userprofile-left">
               <div className="profile-img">
                 <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJblmG352FTrVDWaSGC-e67GuM0_WnY5WgEQ&usqp=CAU"
+                  src={
+                    base64String
+                      ? `data:image/jpg;base64,${base64String}`
+                      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYduP9erFkId0aNuDIMKrBik4-nBSh0NSy5Q&usqp=CAU'
+                  }
                   alt=""
                 />
                 <div className="profile-img-blur">
+                  <input
+                    type="file"
+                    className="profile-img-blur-input"
+                    accept="image/png, image/jpeg"
+                    onChange={imghandler}
+                  />
                   <p>Edit </p>
                   <i className="fa-solid fa-pen"></i>
                 </div>

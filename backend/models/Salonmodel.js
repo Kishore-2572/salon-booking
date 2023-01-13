@@ -9,7 +9,7 @@ const Salonschema = mongoose.Schema(
     city: { type: String, required: true },
     state: { type: String, required: true },
     pincode: { type: Number, required: true },
-    password: { type: String, required: true,select:false },
+    password: { type: String, required: true, select: false },
     services: {
       type: [
         {

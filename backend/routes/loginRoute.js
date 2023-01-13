@@ -42,7 +42,7 @@ loginRouter.post('/signin', async (req, res) => {
           services: salonData.services,
           salonPhotos: salonData.salonPhotos,
           stylistPhotos: salonData.stylistPhotos,
-          isAdmin:salonData.isAdmin,
+          isAdmin: salonData.isAdmin,
           token: generateSalonToken(salonData),
         });
       } else {
