@@ -7,6 +7,7 @@ const salonRouter = require('./routes/salonRoutes.js');
 const bookingRouter = require('./routes/bookingRoutes.js');
 const loginRoute = require('./routes/loginRoute');
 const mongoose = require('mongoose');
+const path=require('path')
 
 mongoose
   .connect(process.env.MONGO_URL)
