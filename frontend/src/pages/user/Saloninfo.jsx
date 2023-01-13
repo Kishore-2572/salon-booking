@@ -74,7 +74,7 @@ const Saloninfo = () => {
       }
       try {
         const resonse = await axios.post(
-          '/booking/user',
+          'https://mushy-pear-cod.cyclic.app/api/booking/user',
           {
             time: time + '=' + date,
             salonId: salonid,
