@@ -48,7 +48,7 @@ const Userhistorycard = ({ bookingDetails, user, callback, fetch }) => {
     if (e.target.value === 'accept') {
       try {
         const response = await axios.post(
-          '/booking/salon',
+          'https://mushy-pear-cod.cyclic.app/api/booking/salon',
           {
             stateOfProcess: 1,
             bookingId: bookingDetails._id,
@@ -62,7 +62,7 @@ const Userhistorycard = ({ bookingDetails, user, callback, fetch }) => {
     } else {
       try {
         const response = await axios.post(
-          '/booking/salon',
+          'https://mushy-pear-cod.cyclic.app/api/booking/salon',
           {
             stateOfProcess: 2,
             bookingId: bookingDetails._id,

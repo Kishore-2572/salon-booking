@@ -48,7 +48,7 @@ const Salonprofile = () => {
 
     try {
       const { data } = await axios.put(
-        `/salon/${user._id}`,
+        `https://mushy-pear-cod.cyclic.app/api/salon/${user._id}`,
         {
           name,
           email,

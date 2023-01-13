@@ -35,7 +35,7 @@ const Userprofile = () => {
     const getDetails = async () => {
       dispatch({ type: 'FETCH_REQUEST' });
       try {
-        const { data } = await axios.get('/booking/user', {
+        const { data } = await axios.get('https://mushy-pear-cod.cyclic.app/api/booking/user', {
           headers: { authorization: `Bearer ${user.token}` },
         });
         setHistory(data);
@@ -61,7 +61,7 @@ const Userprofile = () => {
       dispatch({ type: 'FETCH_REQUEST' });
       try {
         const { data } = await axios.put(
-          `/user/updateuser/${user._id}`,
+          `https://mushy-pear-cod.cyclic.app/api/user/updateuser/${user._id}`,
           {
             name,
             mobile,

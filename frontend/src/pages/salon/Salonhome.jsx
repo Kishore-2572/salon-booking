@@ -30,7 +30,7 @@ const Salonhome = () => {
     const getDetails = async () => {
       dispatch({ type: 'FETCH_REQUEST' });
       try {
-        const { data } = await axios.get('/booking/salon', {
+        const { data } = await axios.get('https://mushy-pear-cod.cyclic.app/api/booking/salon', {
           headers: { authorization: `Bearer ${user.token}` },
         });
         const historyList = data.filter(

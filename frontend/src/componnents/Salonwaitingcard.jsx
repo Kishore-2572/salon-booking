@@ -33,7 +33,7 @@ const Salonwaitingcard = ({ data, user, callback,fetch }) => {
     if (e.target.value === 'accept') {
       try {
         const response = await axios.post(
-          '/booking/salon',
+          'https://mushy-pear-cod.cyclic.app/api/booking/salon',
           {
             stateOfProcess: 1,
             bookingId: data._id,
@@ -46,7 +46,7 @@ const Salonwaitingcard = ({ data, user, callback,fetch }) => {
     } else {
       try {
         const response = await axios.post(
-          '/booking/salon',
+          'https://mushy-pear-cod.cyclic.app/api/booking/salon',
           {
             stateOfProcess: 2,
             bookingId: data._id,

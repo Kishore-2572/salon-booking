@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 import Servicessvg from '../../assets/services.svg';
 import Logo from '../../assets/logo-black.png';
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
@@ -51,7 +50,7 @@ const Saloninfo = () => {
     dispatch({ type: 'FETCH_REQUEST' });
     const getSalonDetails = async () => {
       try {
-        const { data } = await axios.get(`/salon/${salonid}`);
+        const { data } = await axios.get(`https://mushy-pear-cod.cyclic.app/api/salon/${salonid}`);
         setSalon(data);
         setOpenTime(formatTime(data.openingTime));
         setCloseTime(formatTime(data.closingTime));
