@@ -41,7 +41,7 @@ const Signup = () => {
     } else {
       try {
         dispatch({ type: 'SENDING_REQUEST' });
-        const response = await axios.post('/user/signup', {
+        const response = await axios.post('https://mushy-pear-cod.cyclic.app/api/user/signup', {
           name,
           mobile,
           city,

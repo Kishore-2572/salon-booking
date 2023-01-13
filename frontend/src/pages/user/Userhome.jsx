@@ -28,7 +28,7 @@ const Userhome = () => {
     dispatch({ type: 'FETCH_REQUEST' });
     const getSalons = async () => {
       try {
-        const { data } = await axios.get('/salon/');
+        const { data } = await axios.get('https://mushy-pear-cod.cyclic.app/api/salon/');
         setSalons(data);
       } catch (e) {
         toast.error(getError(e));

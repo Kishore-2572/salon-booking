@@ -31,7 +31,7 @@ const Login = () => {
     e.preventDefault();
     dispatch({ type: 'SENDING_REQUEST' });
     try {
-      const response = await axios.post('/login/signin', {
+      const response = await axios.post('https://mushy-pear-cod.cyclic.app/api/login/signin', {
         mobile,
         password,
       });
