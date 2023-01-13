@@ -10,7 +10,6 @@ import Logo from '../src/assets/logo.png';
 import Home from './pages/Home';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
-import Salonprofile from './pages/salon/Salonprofile';
 import Profile from './pages/Profile';
 
 function App() {
@@ -64,7 +63,7 @@ function App() {
         )}
         <main>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route exact path="/" element={<Home />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/profile/" element={<Profile />} />
