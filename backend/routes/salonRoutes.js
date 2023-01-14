@@ -19,9 +19,9 @@ salonRouter.post('/', async (req, res) => {
     const mobile = req.body.mobile;
     const address = req.body.address;
     const city = req.body.city;
-    const state = req.body.state;
+    const state = req.body.salonstate;
     const pincode = req.body.pincode;
-    const services = req.body.services.split(',');
+    const services = req.body.services;
     const hashPassword = bcrypt.hashSync(req.body.password);
     const salon = new Salon({
       name: name,
@@ -33,10 +33,25 @@ salonRouter.post('/', async (req, res) => {
       pincode: pincode,
       services: services,
       password: hashPassword,
+      isAdmin:true
     });
     const newSalon = await salon.save();
     const { password, ...salonData } = newSalon._doc;
-    res.status(200).send({ salonData, token: generateSalonToken(salonData) });
+    res.status(200).send({ 
+      _id: salonData._id,
+      name: salonData.name,
+      email: salonData.email,
+      mobile: salonData.mobile,
+      address: salonData.address,
+      city: salonData.city,
+      state: salonData.state,
+      pincode: salonData.pincode,
+      services: salonData.services,
+      openingTime:salonData.openingTime,
+      closingTime:salonData.closingTime,
+      isOpenToday:salonData.isOpenToday,
+      isAdmin:true,
+      token: generateSalonToken(salonData) });
   } catch (e) {
     res.status(500).send({ message: e.message });
   }

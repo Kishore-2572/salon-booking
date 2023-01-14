@@ -1,10 +1,54 @@
-import React from 'react';
+import React,{useState} from 'react';
 import ss from '../../assets/ss.svg'
 import logo from '../../assets/logo.png'
+import { toast } from 'react-toastify';
+import { getError } from '../../util';
+import axios from 'axios';
+import { useContext } from 'react';
+import { store } from '../../store';
 
 const Salonsignup = () => {
-  const submitHandler = (e) => {
-    e.preventdefault();
+  
+  const { state, dispatch: ctxDispatch }=useContext(store)
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [mobile, setMobile] = useState('');
+  const [address, setAddress] = useState('');
+  const [city, setCity] = useState('');
+  const [salonstate, setSalonState] = useState();
+  const [pincode, setPincode] = useState('');
+  const [service,setService]=useState('');
+  const [password,setPassword]=useState('');
+  const [cpassword,setCpassword]=useState('');
+  const submitHandler =async (e) => {
+    e.preventDefault();
+    try{
+      if(password===cpassword){
+      const services=service.split(',').map((e) => {
+        return e.trim();
+      })
+      // const {data}=await axios.post('https://mushy-pear-cod.cyclic.app/api/salon/',{
+        const {data}=await axios.post('http://localhost:2572/api/salon/',{
+        name,
+        email,
+        mobile,
+        address,
+        city,
+        salonstate,
+        pincode,
+        services,
+        password
+      })
+      console.log(data);
+      ctxDispatch({type:'SIGN_IN',payload:data})
+      localStorage.setItem('user',JSON.stringify(data));
+      window.location.href='/'
+    }else{
+      toast.error("Password doesn't match")
+    }
+    }catch(e){
+      toast.error(getError(e));
+    }
   };
 
   return (
@@ -35,12 +79,18 @@ const Salonsignup = () => {
                     type="text"
                     name="name"
                     placeholder="Enter your shop name"
+                    value={name}
+                    required
+                    onChange={(e)=>setName(e.target.value)}
                   />
                   <input
                     className="ss-input"
                     type="email"
                     name="email"
                     placeholder="Enter your email"
+                    value={email}
+                    required
+                    onChange={(e)=>setEmail(e.target.value)}
                   />
                   <input
                     className="ss-input"
@@ -48,55 +98,80 @@ const Salonsignup = () => {
                     name="mobile"
                     pattern="[0-9]{10}"
                     placeholder="Enter your mobile number"
+                    value={mobile}
+                    required
+                    onChange={(e)=>setMobile(e.target.value)}
                   />
                   <input
                     className="ss-input"
                     type="text"
                     name="address"
                     placeholder="Enter your address line 1"
+                    value={address}
+                    required
+                    onChange={(e)=>setAddress(e.target.value)}
                   />
                   <input
                     className="ss-input"
                     type="text"
                     name="city"
                     placeholder="Enter your city"
+                    value={city}
+                    required
+                    onChange={(e)=>setCity(e.target.value)}
                   />
                   <input
                     className="ss-input"
                     type="text"
                     name="state"
                     placeholder="Enter your State"
+                    value={salonstate}
+                    required
+                    onChange={(e)=>setSalonState(e.target.value)}
                   />
                   <input
                     className="ss-input"
                     type="number"
                     name="pincoe"
+                    pattern="[0-9]{6}"
+                    value={pincode}
                     placeholder="Enter your PIN code"
+                    required
+                    onChange={(e)=>setPincode(e.target.value)}
                   />
                   <input
                     className="ss-input"
                     type="password"
                     name="password"
+                    value={password}
                     placeholder="Enter your password"
+                    required
+                    onChange={(e)=>setPassword(e.target.value)}
                   />
                   <input
                     className="ss-input"
                     type="password"
                     name="cpassword"
+                    value={cpassword}
                     placeholder="Retype the password"
+                    required
+                    onChange={(e)=>setCpassword(e.target.value)}
                   />
                   <input
                     className="ss-input"
                     type="text"
                     name="state"
+                    value={service}
                     placeholder="Comma separated values (i.e Shaving, Facial,)"
+                    required
+                    onChange={(e)=>setService(e.target.value)}
                   />
                 </form>
               </div>
             </div>
             <div className="ss-btn-div">
               <button form="ss-form" type="submit" className="ss-btn">
-                <i class="fa-solid fa-arrow-right "></i>
+                <i className="fa-solid fa-arrow-right "></i>
                 <p>Signup</p>
               </button>
             </div>
