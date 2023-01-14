@@ -156,28 +156,28 @@ const Saloninfo = () => {
                   <div className="salon-image">
                     {' '}
                     <img
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbzy7W-nyDgS5joDyB9l_OSmByMXwRDJG5Qw&usqp=CAU"
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzNPNPvBDTWb5ApP4yarQcQV9kKwaIWbmDhQ&usqp=CAU"
                       alt=""
                     />{' '}
                   </div>
                   <div className="salon-image">
                     {' '}
                     <img
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbzy7W-nyDgS5joDyB9l_OSmByMXwRDJG5Qw&usqp=CAU"
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiZtklJokPr7yg5OkfdgolIAGHsWjmK0e17Q&usqp=CAU"
                       alt=""
                     />{' '}
                   </div>
                   <div className="salon-image">
                     {' '}
                     <img
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbzy7W-nyDgS5joDyB9l_OSmByMXwRDJG5Qw&usqp=CAU"
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1Kf0CrmdkDmChfqALAQM-TdjiLN76SuJkug&usqp=CAU"
                       alt=""
                     />{' '}
                   </div>
                   <div className="salon-image">
                     {' '}
                     <img
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbzy7W-nyDgS5joDyB9l_OSmByMXwRDJG5Qw&usqp=CAU"
+                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAyh7JClABzgeo8nisHUeSjJbuLGel6cUk5A&usqp=CAU"
                       alt=""
                     />{' '}
                   </div>
@@ -196,7 +196,7 @@ const Saloninfo = () => {
                   <div className="stylist-image">
                     {' '}
                     <img
-                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbzy7W-nyDgS5joDyB9l_OSmByMXwRDJG5Qw&usqp=CAU"
+                      src="https://looksgud.com/blog/wp-content/uploads/2017/07/style-inspiration.jpg"
                       alt=""
                     />{' '}
                   </div>
@@ -248,7 +248,7 @@ const Saloninfo = () => {
                 </DialogActions>
               </Dialog>
             </div>
-            )
+            
           </>
         )
       )}

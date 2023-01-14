@@ -81,7 +81,7 @@ ToastContainer {
 .navbar {
   width: 100%;
   padding: 10px 20px;
-  height: 7vh;
+  height: 8vh;
   background: black;
   position: fixed;
   z-index: 999;
@@ -122,7 +122,6 @@ ToastContainer {
   height: 3rem;
   border: 2px solid white;
   border-radius: 50%;
-  padding: 0.1rem;
   overflow: hidden;
 }
 
@@ -623,7 +622,7 @@ ToastContainer {
 .saloninfo {
   width: 100wh;
   height: auto;
-  padding-top: 10vh;
+  padding-top: 11vh;
   padding-left: 2rem;
   padding-right: 2rem;
   position: relative;
@@ -864,7 +863,7 @@ ToastContainer {
 }
 .userprofile-left {
   width: 60%;
-  padding: 2rem 2rem;
+  padding: 1rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -977,7 +976,7 @@ ToastContainer {
   font-size: 1.5rem;
   font-weight: bold;
   cursor: pointer;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 
 .userdetails-save-btn > img {
