@@ -80,8 +80,8 @@ ToastContainer {
 }
 .navbar {
   width: 100%;
-  padding: 10px 20px;
-  height: 8vh;
+  padding: 13x 20px;
+  height: 14vh;
   background: black;
   position: fixed;
   z-index: 999;
@@ -174,7 +174,7 @@ ToastContainer {
 }
 
 .login-outer {
-  height: 80%;
+  height: 85%;
   width: 30rem;
   background-color: white;
   border-radius: 10px;
@@ -184,7 +184,7 @@ ToastContainer {
 }
 
 .login-inner {
-  height: 80%;
+  height: 90%;
   width: 80%;
   background-color: black;
   border-radius: 0.8rem;
@@ -270,6 +270,15 @@ ToastContainer {
   bottom: 5rem;
 }
 
+@media only screen and (max-height: 800px) and (min-height: 500px) {
+  .login-logo {
+    width: 5rem;
+  }
+  .login-svg{
+    width: 30rem;
+  }
+}
+
 @media only screen and (max-width: 1300px) and (min-width: 600px) {
   .form-container {
     width: 100%;
@@ -326,7 +335,7 @@ ToastContainer {
 .signup {
   width: 100wh;
   height: 100vh;
-  overflow: hidden;
+  overflow: scroll;
   position: relative;
 }
 
@@ -418,6 +427,34 @@ ToastContainer {
   cursor: pointer;
 }
 
+@media only screen and (max-height: 800px) and (min-height: 500px) {
+  .signup-logo {
+    width: 5rem;
+  }
+  .signup-svg{
+    width: 20rem;
+  }
+
+  .signup-form-label{
+    font-size: 1.5rem;
+  }
+  .signup-input{
+    height: 1.5rem;
+    margin: 0.6rem;
+  }
+
+  .signup-header {
+    margin: 0.6rem auto;
+  }
+
+  .signup-btn-div{
+    margin: 0.5rem auto;
+  }
+  .signup-form-div{
+    margin: 0.6rem;
+  }
+}
+
 @media only screen and (max-width: 1300px) and (min-width: 600px) {
   .signup-form-container {
     width: 100%;
@@ -473,9 +510,9 @@ ToastContainer {
 /* ===================== USER HOME ===================== */
 .userhome {
   width: 100wh;
-  height: 90vh;
+  height: 86vh;
   position: relative;
-  padding-top: 12vh;
+  padding-top: 14vh;
 }
 
 .userhome-header {
@@ -484,7 +521,9 @@ ToastContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: auto 2rem;
+  position:fixed;
+  background-color: black;
+
 }
 
 .userhome-heading {
@@ -518,7 +557,7 @@ ToastContainer {
 }
 
 .salon-cards {
-  padding: 1rem 2rem;
+  padding:4rem 2rem 1rem 2rem;
   overflow-y: scroll;
   display: flex;
   flex-wrap: wrap;
@@ -622,7 +661,7 @@ ToastContainer {
 .saloninfo {
   width: 100wh;
   height: auto;
-  padding-top: 11vh;
+  padding-top: 14vh;
   padding-left: 2rem;
   padding-right: 2rem;
   position: relative;
@@ -640,7 +679,7 @@ ToastContainer {
 
 .services-provided {
   position: absolute;
-  top: 25vh;
+  top: 30vh;
   right: 4rem;
 }
 
@@ -870,8 +909,8 @@ ToastContainer {
   justify-content: center;
 }
 .profile-img {
-  width: 10rem;
-  height: 10rem;
+  width: 7rem;
+  height: 7rem;
   border-radius: 50%;
   border: 5px solid white;
   overflow: hidden;
@@ -880,14 +919,14 @@ ToastContainer {
 
 .profile-img img,
 .profile-img-blur-input {
-  width: 10rem;
-  height: 10rem;
+  width: 7rem;
+  height: 7rem;
   object-fit: cover;
 }
 
 .profile-img:hover .profile-img-blur {
-  width: 10rem;
-  height: 10rem;
+  width: 7rem;
+  height: 7rem;
   border-radius: 50%;
   overflow: hidden;
   background: rgba(253, 253, 253, 0.3);
@@ -906,7 +945,6 @@ ToastContainer {
   height: 20rem;
   overflow: hidden;
   background: transparent;
-  /* top: 0; */
   left: 0;
   position: absolute;
   z-index: 50;
@@ -927,7 +965,7 @@ ToastContainer {
 }
 
 .userprofile-user-details {
-  padding-top: 2rem;
+  padding-top: 1.5rem;
   width: 100%;
   display: flex;
 }
@@ -1252,9 +1290,9 @@ h5 {
 /* ===========================  SALON HOME =================================== */
 
 .salonhome {
-  height: 90vh;
+  height: 86vh;
   width: 100wh;
-  padding-top: 10vh;
+  padding-top: 14vh;
   display: flex;
 }
 
@@ -1446,7 +1484,7 @@ option,
 .salonprofile {
   width: 100wh;
   height: 90vh;
-  margin-top: 9vh;
+  margin-top: 12vh;
   overflow: scroll;
 }
 

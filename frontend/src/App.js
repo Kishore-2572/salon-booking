@@ -67,12 +67,8 @@ function App() {
             <Route exact path="/signup" element={<Signup />} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/profile/" element={<Profile />} />
-            {user && !user.isAdmin && (
-              <>
-                <Route path="/saloninfo/:salonid" element={<Saloninfo />} />
-                <Route path="/salonregister" element={<Salonsignup />} />
-              </>
-            )}
+            <Route path="/saloninfo/:salonid" element={<Saloninfo />} />
+            <Route path="/salonregister" element={<Salonsignup />} />
           </Routes>
         </main>
       </div>
